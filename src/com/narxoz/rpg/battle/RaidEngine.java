@@ -25,9 +25,29 @@ public class RaidEngine {
         // Use random for critical strikes or other deterministic events.
         // Example: boolean critA = random.nextInt(100) < 10;
         RaidResult result = new RaidResult();
-        result.setRounds(0);
-        result.setWinner("TBD");
-        result.addLine("TODO: implement raid simulation");
+        if (teamA == null || teamB == null || teamASkill == null || teamBSkill == null) {
+            result.setWinner("Invalid");
+            result.setRounds(0);
+            result.addLine("Raid could not start: null input provided.");
+            return result;
+        }
+        if (!teamA.isAlive() || !teamB.isAlive()) {
+            result.setWinner("Invalid");
+            result.setRounds(0);
+            result.addLine("Raid could not start: one or both teams are already defeated.");
+            return result;
+        }
+        final int maxRounds = 100;
+        int round = 0;
+
+        result.addLine("Raid started: " + teamA.getName() + " vs " + teamB.getName());
+        result.addLine(teamA.getName() + " uses " + teamASkill.getSkillName() + " (" + teamASkill.getEffectName() + ")");
+        result.addLine(teamB.getName() + " uses " + teamBSkill.getSkillName() + " (" + teamBSkill.getEffectName() + ")");
+
+
+//        result.setRounds(0);
+//        result.setWinner("TBD");
+//        result.addLine("TODO: implement raid simulation");
         return result;
     }
 }
