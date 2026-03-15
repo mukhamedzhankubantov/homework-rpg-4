@@ -2,11 +2,7 @@ package com.narxoz.rpg;
 
 import com.narxoz.rpg.battle.RaidEngine;
 import com.narxoz.rpg.battle.RaidResult;
-import com.narxoz.rpg.bridge.AreaSkill;
-import com.narxoz.rpg.bridge.FireEffect;
-import com.narxoz.rpg.bridge.IceEffect;
-import com.narxoz.rpg.bridge.SingleTargetSkill;
-import com.narxoz.rpg.bridge.Skill;
+import com.narxoz.rpg.bridge.*;
 import com.narxoz.rpg.composite.CombatNode;
 import com.narxoz.rpg.composite.EnemyUnit;
 import com.narxoz.rpg.composite.HeroUnit;
@@ -49,11 +45,19 @@ public class Main {
         Skill slashFire = new SingleTargetSkill("Slash", 20, new FireEffect());
         Skill slashIce = new SingleTargetSkill("Slash", 20, new IceEffect());
         Skill stormFire = new AreaSkill("Storm", 15, new FireEffect());
+        Skill slashPhysical = new SingleTargetSkill("Slash", 20, new PhysicalEffect());
+        Skill stormIce = new AreaSkill("Storm", 15, new IceEffect());
 
         System.out.println("\n--- Bridge Preview ---");
+        System.out.println("Same skill, different effects:");
         System.out.println(slashFire.getSkillName() + " using " + slashFire.getEffectName());
         System.out.println(slashIce.getSkillName() + " using " + slashIce.getEffectName());
+        System.out.println(slashPhysical.getSkillName() + " using " + slashPhysical.getEffectName());
+
+        System.out.println("Same effect, different skills:");
+        System.out.println(slashFire.getSkillName() + " using " + slashFire.getEffectName());
         System.out.println(stormFire.getSkillName() + " using " + stormFire.getEffectName());
+        System.out.println(stormIce.getSkillName() + " using " + stormIce.getEffectName());
 
         // TODO: run raid
         RaidEngine engine = new RaidEngine().setRandomSeed(42L);
