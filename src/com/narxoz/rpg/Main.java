@@ -29,13 +29,17 @@ public class Main {
         PartyComposite heroes = new PartyComposite("Heroes");
         heroes.add(warrior);
         heroes.add(mage);
+        heroes.add(rogue);
 
         PartyComposite frontline = new PartyComposite("Frontline");
         frontline.add(goblin);
         frontline.add(orc);
+        PartyComposite backline = new PartyComposite("Backline");
+        backline.add(necromancer);
 
         RaidGroup enemies = new RaidGroup("Enemy Raid");
         enemies.add(frontline);
+        enemies.add(backline);
 
         System.out.println("--- Team Structures ---");
         heroes.printTree("");
