@@ -27,8 +27,7 @@ public class PartyComposite implements CombatNode {
 
     @Override
     public int getHealth() {
-        // TODO: Composite aggregation
-        // Return total health of all children (and nested children).
+
         int totalHealth = 0;
         for (CombatNode child : children) {
             totalHealth += child.getHealth();
@@ -38,8 +37,7 @@ public class PartyComposite implements CombatNode {
 
     @Override
     public int getAttackPower() {
-        // TODO: Composite aggregation
-        // Return total attack of alive children only.
+
         int totalAttack = 0;
         for (CombatNode child : children) {
             if (child.isAlive()) {
@@ -51,12 +49,7 @@ public class PartyComposite implements CombatNode {
 
     @Override
     public void takeDamage(int amount) {
-        // TODO: Composite distribution
-        // Distribute incoming damage across alive children.
-        // Suggested baseline:
-        // 1) Collect alive children
-        // 2) Split amount evenly (or using your own documented rule)
-        // 3) Apply damage to each child
+
         if (amount <= 0) {
             return;
         }
@@ -80,8 +73,7 @@ public class PartyComposite implements CombatNode {
 
     @Override
     public boolean isAlive() {
-        // TODO: Composite liveness
-        // Return true when at least one child is alive.
+
         for (CombatNode child : children) {
             if (child.isAlive()) {
                 return true;
@@ -97,8 +89,7 @@ public class PartyComposite implements CombatNode {
 
     @Override
     public void printTree(String indent) {
-        // TODO: Tree visualization
-        // Print this node and recurse into children with increased indent.
+
         System.out.println(indent + "+ " + name + " [HP=" + getHealth() + ", ATK=" + getAttackPower() + "]");
         for (CombatNode child : children) {
             child.printTree(indent + "  ");
@@ -106,7 +97,7 @@ public class PartyComposite implements CombatNode {
     }
 
     private List<CombatNode> getAliveChildren() {
-        // TODO: helper for takeDamage()
+
         List<CombatNode> aliveChildren = new ArrayList<>();
         for (CombatNode child : children) {
             if (child.isAlive()) {
