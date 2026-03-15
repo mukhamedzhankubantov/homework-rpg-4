@@ -23,6 +23,7 @@ public class Main {
         EnemyUnit goblin = new EnemyUnit("Goblin", 70, 20);
         EnemyUnit orc = new EnemyUnit("Orc", 120, 25);
         EnemyUnit necromancer = new EnemyUnit("Necromancer", 80, 30);
+        HeroUnit rogue = new HeroUnit("Valeera", 85, 35);
 
         // TODO: build composite hierarchy (nested)
         PartyComposite heroes = new PartyComposite("Heroes");
